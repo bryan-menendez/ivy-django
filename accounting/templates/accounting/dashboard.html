@@ -8,10 +8,17 @@
             <button class="btn btn-primary btn-sm btn-block">create customer</button>
             <table class="table table-sm">
                 <tr>
-                    <th></th>
-                    <th>customers</th>
-                    <th>orders</th>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>phone</th>
                 </tr>
+                {% for customer in customers %}
+                    <tr>
+                        <td>{{customer.id}}</td>
+                        <td>{{customer.name}}</td>
+                        <td>{{customer.phone}}</td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
     </div>
@@ -28,6 +35,15 @@
                     <th>update</th>
                     <th>remove</th>
                 </tr>
+                {% for order in orders %}
+                    <tr>
+                        <td>{{order.product}}</td>
+                        <td>{{order.date_created}}</td>
+                        <td>{{order.status}}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
             </table>
         </div>
     </div>
