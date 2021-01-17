@@ -22,4 +22,29 @@ def products(request):
     return render(request, 'accounting/products.html', {'products' : products})
 
 def customers(request):
-    return render(request, 'accounting/customers.html')
+    customers = Customer.objects.all()
+
+    for c in customers:
+        orders = c.order_set.all()
+        c.order_pending_count = orders.filter(status="pending").count()
+        c.total_spent = 0
+
+        for o in orders:
+            c.total_spent += o.product.price
+
+    context = {
+        'customers' : customers,
+    }
+
+    return render(request, 'accounting/customers.html', context)
+    
+def customer(request, pk):
+    customer = Customer.objects.get(id=pk)
+    orders = customer.order_set.all()
+
+    context = {
+        'customer' : customer,
+        'customer_orders' : orders,
+    }
+
+    return render(request, 'accounting/customer.html', context)

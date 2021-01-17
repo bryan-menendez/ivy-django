@@ -1,0 +1,61 @@
+{% extends 'ivy/layout.html' %}
+
+{% block content %}
+<p>BE A PIMP CALLED SLICKBACK, HOW CANN I HELP YAAAAAAAA</p>
+
+<div class="row" >
+    <div class="col">
+        <div class="card">
+            <div class="card-header"> <h4>Customer</h4></div>
+            <div class="card-body">
+                <button class="btn btn-primary"> update customer</button>
+                <button class="btn btn-primary"> delete customer</button>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header"> <h4>Customer info</h4></div>
+            <div class="card-body">
+                <p>name: {{customer.name}} </p>
+                <p>email: {{ customer.email }} </p>
+                <p>phone: {{ customer.phone }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-header"> <h4>orders</h4></div>
+            
+            <table class="table">
+                <tr>
+                    <th>id</th>
+                    <th>product</th>
+                    <th>price</th>
+                    <th>status</th>
+                </tr>
+                {% for o in customer_orders %}
+                    <tr>
+                        <td>{{o.id}}</td>
+                        <td>{{o.product}}</td>
+                        <td>{{o.product.price}}</td>
+                        <td>{{o.status}}</td>
+                    </tr>
+                {% endfor%}
+            </table>
+
+            <div class="card-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-body">
+            <button class="btn btn-primary">FIND SOME BAE</button>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
