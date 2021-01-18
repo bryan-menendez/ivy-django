@@ -1,0 +1,15 @@
+{% extends 'ivy/layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form action="{% url 'accounting_order_delete' order.id %}" method="POST">
+                {% csrf_token %}
+                <p>are you sure that u wanna delete dis??????</p>
+                
+                
+                <input type="submit" value="Delete">
+            </form>
+        </div>
+    </div>
+{% endblock content %}

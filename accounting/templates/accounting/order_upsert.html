@@ -1,0 +1,14 @@
+{% extends 'ivy/layout.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ order_upsert_form }}
+                
+                <input type="submit" value="Save">
+            </form>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import *
+from .forms import *
 
 def home(request):
     orders = Order.objects.all()
@@ -48,3 +49,52 @@ def customer(request, pk):
     }
 
     return render(request, 'accounting/customer.html', context)
+
+def orderCreate(request):
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid:
+            form.save()
+            return redirect('accounting_home')
+    
+    #GET
+    form = OrderForm()
+    context = {
+        'order_upsert_form' : form
+    }
+    return render(request, 'accounting/order_upsert.html', context)
+
+def orderView(request, pk):
+    return null
+
+def orderUpdate(request, pk):
+    order = Order.objects.get(id=pk)
+
+    if request.method == 'POST':
+        form = OrderForm(request.POST, instance=order)
+        if form.is_valid:
+            form.save()
+            return redirect('accounting_home')
+    
+    #GET
+    form = OrderForm(instance=order)
+    context = {
+        'order_upsert_form' : form
+    }
+    return render(request, 'accounting/order_upsert.html', context)
+
+
+def orderDelete(request, pk):
+    order = Order.objects.get(id=pk)
+
+    if request.method == 'POST':
+        order.delete()
+        return redirect('accounting_home')
+    
+    #GET
+    context = {
+        'order' : order
+    }
+    return render(request, 'accounting/order_delete.html', context)
+
+    
