@@ -39,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounting',
     'ivy',
+    'api.apps.ApiConfig',
+    'rest_framework',
+    
 ]
 
 MIDDLEWARE = [
