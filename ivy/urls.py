@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounting/', include('accounting.urls')),
     path('api/', include('api.urls')),
+    path('react/', include('reactfront.urls')),
 ]

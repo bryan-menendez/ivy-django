@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ivy',
     'api.apps.ApiConfig',
     'rest_framework',
+    'reactfront.apps.ReactfrontConfig',
     
 ]
 
