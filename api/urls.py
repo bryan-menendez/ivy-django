@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
-urlpatterns = [
-    path('', views.RoomView.as_view()),
+urlpatterns = [    
+    path('', views.home),
+    path('rooms/list', views.RoomView.as_view()),
+    path('rooms/create', views.RoomCreateView.as_view()),
 ]
