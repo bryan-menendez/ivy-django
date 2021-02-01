@@ -55,7 +55,7 @@ export default class RoomCreatePage extends Component{
         fetch('/api/rooms/create', requestOptions).then( 
             (response) => response.json()
         ).then( 
-            (data) => console.log(data)
+            (data) => this.props.history.push('/react/room/' + data.code)
         );
     }
     
@@ -85,7 +85,7 @@ export default class RoomCreatePage extends Component{
                     <FormHelperText>
                         <div align="center">Guest controllers</div>
                     </FormHelperText>
-                    <RadioGroup row onChange={this.handleGuestCanPauseChange} defaultValue="true">
+                    <RadioGroup row onChange={this.handleGuestCanPauseChange} defaultValue="false">
                         <FormControlLabel value="true" control={<Radio color="primary"/>} label="Play/Pause" labelPlacement="bottom"/>
                         <FormControlLabel value="false" control={<Radio color="secondary"/>} label="Disabled" labelPlacement="bottom"/>
                     </RadioGroup>
